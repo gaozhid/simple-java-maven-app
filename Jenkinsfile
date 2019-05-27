@@ -6,9 +6,9 @@ pipeline {
         }
     }
     stages {
-        stage('CheckStyle') { 
-            steps {
-                sh 'mvn checkstyle:checkstyle' 
+        stage('CheckStyle'){
+            steps{
+                sh "mvn checkstyle:checkstyle "
                 checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: '', unHealthy: ''
             }
         }
@@ -34,4 +34,3 @@ pipeline {
         }
     }
 }
-
