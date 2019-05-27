@@ -6,12 +6,18 @@ pipeline {
         }
     }
     stages {
+        stage('CheckStyle') { 
+            steps {
+                sh 'mvn checkstyle:checkstyle' 
+                checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: '', unHealthy: ''
+            }
+        }
         stage('Build') { 
             steps {
                 sh 'mvn -B -DskipTests clean package' 
             }
         }
-         stage('Test') {
+        stage('Test') {
             steps {
                 sh 'mvn test'
             }
